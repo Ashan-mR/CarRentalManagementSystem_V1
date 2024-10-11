@@ -27,5 +27,23 @@ namespace CarRentalManagementSystem_V1
         Console.WriteLine("\nCar Added Successfully.");
     }
 
+    public void GetAllData()
+    {
+        using (var connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+            var command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM Cars";
+            using (var reader = command.ExecuteReader())
+            {
+                Console.WriteLine("-- Cars List --\n");
+                while (reader.Read())
+                {
+                    Console.WriteLine($"ID: {reader.GetInt32(0)}, Brand: {reader.GetString(1)}, Model: {reader.GetString(2)}, RentalPrice: {reader.GetDecimal(3)}");
+                }
+            }
+        }
+    }
+
 }
 }
