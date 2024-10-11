@@ -45,5 +45,24 @@ namespace CarRentalManagementSystem_V1
         }
     }
 
+    public void GetCarById(int carId)
+    {
+        using (var connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+            var command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM Cars WHERE carId == @carId";
+            command.Parameters.AddWithValue("@carId", carId);
+            using (var reader = command.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    Console.WriteLine($"ID: {reader.GetInt32(0)}, Brand: {reader.GetString(1)}, Model: {reader.GetString(2)}, RentalPrice: {reader.GetDecimal(3)}");
+                }
+            }
+
+        }
+    }
+
 }
 }
