@@ -9,7 +9,7 @@
             {
                 Console.Clear();
                 Console.WriteLine("carManagementSystem");
-                Console.WriteLine("1. Add a car");
+                Console.WriteLine("1. Add a car");  
                 Console.WriteLine("2. View All cars");
                 Console.WriteLine("3. Update a car");
                 Console.WriteLine("4. Delete a car");
@@ -70,7 +70,15 @@
                      }
 
 
-
+                public string Capitalizebrand(string brand)
+                {
+                    var words = brand.Split(' ');
+                    for (int i = 0; i < words.Length; i++)
+                    {
+                        words[i] = char.ToUpper(words[i][0]) + words[i].Substring(1).ToLower();
+                    }
+                    return string.Join(" ", words);
+                }
 
             }
         }
