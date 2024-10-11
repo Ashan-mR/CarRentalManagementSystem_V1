@@ -89,5 +89,27 @@ namespace CarRentalManagementSystem_V1
         }
     }
 
+    public void Delete(int carId)
+    {
+        using (var connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+            var command = connection.CreateCommand();
+            command.CommandText = "DELETE FROM Cars WHERE carID = @carID";
+            command.Parameters.AddWithValue("@carID", carID);
+            var RowEffected = command.ExecuteNonQuery();
+            if (RowEffected > 0)
+            {
+                Console.WriteLine("Car Delete Successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Car Not Found.");
+            }
+
+        }
+
+    }
+
 }
 }
