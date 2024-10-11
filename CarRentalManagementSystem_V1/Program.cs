@@ -68,7 +68,7 @@
                         Console.WriteLine();
                         break;
                 }
-                Console.ReadLine();
+              
 
 
 
