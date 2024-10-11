@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 namespace CarRentalManagementSystem_V1
 {
     public class Car
-    {
 
-        private int carId { get; set; }
+        private string carId { get; set; }
         private string brand { get; set; }
         private string Model { get; set; }
         private decimal rentalPrice { get; set; }
 
-        public Car(int carId, string brand, string model, decimal rentalPrice)
+        public Car(string carId, string brand, string model, decimal rentalPrice)
         {
             this.carId = carId;
             this.brand = brand;

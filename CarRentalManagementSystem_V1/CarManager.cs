@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace CarRentalManagementSystem_V1
 {
-    public class CarManager:Car
+    public class CarManager: Car
     {
         private List<Car> cars = new List<Car>();
-        private int carID = 1;
+        
 
-        public void CreateCar(string brand, string Model, decimal rentalPrice)
+        public void CreateCar(string carID,string brand, string Model, decimal rentalPrice)
         {
-            var car = new Car(carID++, brand, Model, rentalPrice);
+            var car = new Car(carID, brand, Model, rentalPrice);
             cars.Add(car);
             Console.WriteLine("Car Added Successfully");
         }
@@ -29,7 +29,7 @@ namespace CarRentalManagementSystem_V1
                 Console.WriteLine(car);
             }
         }
-        public void UpdateCars(int carId, string brand, string Model, decimal rentalPrice)
+        public void UpdateCars(string carId, string brand, string Model, decimal rentalPrice)
         {
             var car = cars.Find(c => c.carId == carId);
 
@@ -43,7 +43,7 @@ namespace CarRentalManagementSystem_V1
             Console.WriteLine("Car updated succesfully");
 
         }
-        public void DeleteCars(int carId)
+        public void DeleteCars(string carId)
         {
             var car = cars.Find(c => c.carId == carId);
             if (car == null)

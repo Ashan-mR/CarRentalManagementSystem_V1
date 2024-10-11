@@ -4,14 +4,11 @@
     {
         static void Main(string[] args)
         {
-            var CarManager = new carManager();
-            var _carRepository = new carRepository();
-            bool exit = true;
 
             while (exit)
             {
                 Console.Clear();
-                Console.WriteLine("--- carManagementSystem ---");
+                Console.WriteLine("carManagementSystem");
                 Console.WriteLine("1. Add a car");
                 Console.WriteLine("2. View All cars");
                 Console.WriteLine("3. Update a car");
@@ -31,14 +28,14 @@
 
                         decimal RentrentalPrice = _carManager.ValidatecarRentrentalPrice();
 
-                        //_carManager.Createcar(brand, Model, RentrentalPrice);
+
                         _carRepository.Insert(brand, Model, RentrentalPrice);
 
                         break;
                     case "2":
                         Console.Clear();
 
-                        //_carManager.Readcars();
+
                         _carRepository.GetAllData();
 
                         break;
@@ -52,7 +49,7 @@
                         string newModel = Console.ReadLine();
                         decimal newRentrentalPrice = _carManager.ValidatecarRentrentalPrice();
 
-                        //_carManager.Updatecar(carId, newbrand, newModel, newRentrentalPrice);
+
                         _carRepository.Update(carId, newbrand, newModel, newRentrentalPrice);
 
                         break;
@@ -61,7 +58,6 @@
                         Console.Write("Enter car Id to Update: ");
                         int deleteId = int.Parse(Console.ReadLine());
 
-                        //_carManager.Deletecar(deleteId);
                         _carRepository.Delete(deleteId);
 
                         break;
@@ -72,9 +68,11 @@
                         Console.WriteLine();
                         break;
                 }
+                Console.ReadLine();
 
 
 
             }
         }
+    }
 }
