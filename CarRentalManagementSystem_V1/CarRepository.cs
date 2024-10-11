@@ -64,5 +64,30 @@ namespace CarRentalManagementSystem_V1
         }
     }
 
+    public void Update(int carId, string brand, string Model, decimal rentalPrice)
+    {
+        using (var connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+            var command = connection.CreateCommand();
+            command.CommandText = "UPDATE cars SET Brand=@brand, Model=@Model,RentalPrice=@rentalPrice  WHERE carId = @carId";
+            command.Parameters.AddWithValue("@brand", brand);
+            command.Parameters.AddWithValue("@Model", Model);
+            command.Parameters.AddWithValue("@RentalPrice", rentalPrice);
+            command.Parameters.AddWithValue("@carId", carId);
+            var RowEffected = command.ExecuteNonQuery();
+            if (RowEffected > 0)
+            {
+                Console.WriteLine("\nCar Update Successfully.");
+
+            }
+            else
+            {
+                Console.WriteLine("Car Not Found.");
+            }
+
+        }
+    }
+
 }
 }
