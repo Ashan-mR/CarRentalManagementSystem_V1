@@ -8,8 +8,7 @@ namespace CarRentalManagementSystem_V1
 {
     internal class PetrolCar:Car
     {
-
-       
+        private string ID { get; set; }
         private string FuelTankCapacity { get; set; }
         private string EngineCapacity { get; set; }
 
